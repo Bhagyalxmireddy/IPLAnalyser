@@ -72,4 +72,24 @@ public class IPLAnalyser {
         return sortedStateCensusJson;
 
     }
+
+    public String getSortedPlayersDataForMaximumFour() throws IplCricketAnalyserException {
+        if(playerCSVList == null || playerCSVList.size() == 0){
+            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
+        }
+        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.four,Comparator.reverseOrder());
+        this.sort(playerCSVList,censusCSVComparator);
+        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
+        return sortedStateCensusJson;
+    }
+
+    public String getSortedPlayersDataForMaximumSix() throws IplCricketAnalyserException {
+        if(playerCSVList == null || playerCSVList.size() == 0){
+            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
+        }
+        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.six,Comparator.reverseOrder());
+        this.sort(playerCSVList,censusCSVComparator);
+        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
+        return sortedStateCensusJson;
+    }
 }

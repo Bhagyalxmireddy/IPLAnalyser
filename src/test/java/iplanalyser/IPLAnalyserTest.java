@@ -20,7 +20,7 @@ public class IPLAnalyserTest {
         }
     }
     @Test
-    public void givenIPLData_WhenSortedByTopBattingAverages_ShouldReturnSortedResult() {
+    public void givenIPLRunsData_WhenSortedByTopBattingAverages_ShouldReturnCorrectResult() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser();
             iplAnalyser.loadIPLRunsData(IPL_FACTS_SHEET_MOST_RUNS);
@@ -30,13 +30,33 @@ public class IPLAnalyserTest {
         } catch (IplCricketAnalyserException e) { }
     }
     @Test
-    public void givenIPLData_WhenSortedByTopStrikeRate_ShouldReturnSortedResult() {
+    public void givenIPLRunsData_WhenSortedByTopStrikeRate_ShouldReturnCorrectResult() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser();
             iplAnalyser.loadIPLRunsData(IPL_FACTS_SHEET_MOST_RUNS);
             String sortedIPLData = iplAnalyser.getPlayerWiseSortedStrikeRate();
             IPLRunsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLRunsCSV[].class);
             Assert.assertEquals("Ishant Sharma", scoreCSV[0].player);
+        } catch (IplCricketAnalyserException e) { }
+    }
+    @Test
+    public void givenIPLRunsData_WhenSortedByMaximumFour_ShouldReturnCorrectResult() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            iplAnalyser.loadIPLRunsData(IPL_FACTS_SHEET_MOST_RUNS);
+            String sortedIPLData = iplAnalyser.getSortedPlayersDataForMaximumFour();
+            IPLRunsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLRunsCSV[].class);
+            Assert.assertEquals("Shikhar Dhawan", scoreCSV[0].player);
+        } catch (IplCricketAnalyserException e) { }
+    }
+    @Test
+    public void givenIPLRunsData_WhenSortedByMaximumSix_ShouldReturnCorrectResult(){
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            iplAnalyser.loadIPLRunsData(IPL_FACTS_SHEET_MOST_RUNS);
+            String sortedIPLData = iplAnalyser.getSortedPlayersDataForMaximumSix();
+            IPLRunsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLRunsCSV[].class);
+            Assert.assertEquals("Andre Russell", scoreCSV[0].player);
         } catch (IplCricketAnalyserException e) { }
     }
 }
