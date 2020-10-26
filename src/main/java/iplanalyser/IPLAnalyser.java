@@ -38,16 +38,6 @@ public class IPLAnalyser {
         }
     }
 
-    public String getSortedAverage() throws IplCricketAnalyserException {
-        if(playerCSVList == null || playerCSVList.size() == 0){
-            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
-        }
-        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.average,Comparator.reverseOrder());
-        this.sort(playerCSVList,censusCSVComparator);
-        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
-        return sortedStateCensusJson;
-    }
-
     private void sort(List<IPLRunsCSV> playerCSVList, Comparator<IPLRunsCSV> playerCSVComparator) {
         for (int i=0;i<playerCSVList.size()-1;i++) {
             for (int j = 0; j < playerCSVList.size()-1; j++) {
@@ -59,5 +49,27 @@ public class IPLAnalyser {
                 }
             }
         }
+    }
+
+    public String getSortedAverage() throws IplCricketAnalyserException {
+        if(playerCSVList == null || playerCSVList.size() == 0){
+            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
+        }
+        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.average,Comparator.reverseOrder());
+        this.sort(playerCSVList,censusCSVComparator);
+        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
+        return sortedStateCensusJson;
+    }
+
+
+    public String getPlayerWiseSortedStrikeRate() throws IplCricketAnalyserException {
+        if(playerCSVList == null || playerCSVList.size() == 0){
+            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
+        }
+        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.strikingRate,Comparator.reverseOrder());
+        this.sort(playerCSVList,censusCSVComparator);
+        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
+        return sortedStateCensusJson;
+
     }
 }
