@@ -119,4 +119,14 @@ public class IPLAnalyserTest {
             Assert.assertEquals("Krishnappa Gowtham", scoreCSV[0].player);
         } catch (IplCricketAnalyserException e) { }
     }
+    @Test
+    public void givenIPLData_WhenSortedByBestEconomy_ShouldReturnSortedResult() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            iplAnalyser.loadIPLWktsData(IPL_FACTS_SHEET_MOST_WKTS);
+            String sortedIPLData = iplAnalyser.geteSortedPlayerBestEconomyOnBlowing();
+            IPLWktsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLWktsCSV[].class);
+            Assert.assertEquals("Ben Cutting", scoreCSV[0].player);
+        } catch (IplCricketAnalyserException e) { }
+    }
 }
