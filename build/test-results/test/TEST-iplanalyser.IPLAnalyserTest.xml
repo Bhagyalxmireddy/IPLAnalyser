@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iplanalyser.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T04:34:42" hostname="DESKTOP-25DPEJS" time="73.194">
+<testsuite name="iplanalyser.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T04:48:55" hostname="DESKTOP-25DPEJS" time="155.691">
   <properties/>
-  <testcase name="givenIPLCSVRunsFileReturnsCorrectRecords" classname="iplanalyser.IPLAnalyserTest" time="73.194"/>
+  <testcase name="givenIPlData_whenSortOnBattingAndBowlingAverages_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="155.691"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

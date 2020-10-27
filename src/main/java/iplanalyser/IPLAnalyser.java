@@ -31,8 +31,9 @@ public class IPLAnalyser {
         return playerCSVMap.size();
 
     }
-    public int loadIPLLeagueData(String csvPath1, String csvPath2) {
-       return 0;
+    public int loadIPLLeagueData(String csvPath1, String csvPath2) throws IplCricketAnalyserException {
+        playerCSVMap = new IPLPlayersLoader().loadIPLLeagueData(csvPath1,csvPath2);
+        return playerCSVMap.size();
     }
 
     private void sort(Comparator<IPLPlayerDAO> playerCSVComparator) {

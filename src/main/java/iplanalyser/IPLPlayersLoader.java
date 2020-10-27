@@ -43,4 +43,17 @@ public class IPLPlayersLoader {
                     e.type.name());
         }
     }
+    public Map<String, IPLPlayerDAO> loadIPLLeagueData(String csvPath1, String csvPath2) throws IplCricketAnalyserException {
+        Map<String, IPLPlayerDAO> map1 = loadIPLPlayersData(IPLRunsCSV.class, csvPath1);
+        Map<String, IPLPlayerDAO> map2 = loadIPLPlayersData(IPLWktsCSV.class, csvPath2);
+        Map<String, IPLPlayerDAO> playerCSVMap = new HashMap<>();
+        for (Map.Entry<String,IPLPlayerDAO> m1:map1.entrySet()){
+            for (Map.Entry<String,IPLPlayerDAO> m2:map2.entrySet()){
+                if (m1.getValue().player.equals(m2.getValue().player)){
+                    playerCSVMap.put(m2.getKey(),m2.getValue());
+                }
+            }
+        }
+        return playerCSVMap;
+    }
 }
