@@ -129,4 +129,14 @@ public class IPLAnalyserTest {
             Assert.assertEquals("Ben Cutting", scoreCSV[0].player);
         } catch (IplCricketAnalyserException e) { }
     }
+    @Test
+    public void givenIPLData_WhenSortedByWhoHadBestStrikeRateWithMaximum5wAnd4w_ShouldReturnSortedResult() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            iplAnalyser.loadIPLWktsData(IPL_FACTS_SHEET_MOST_WKTS);
+            String sortedIPLData = iplAnalyser.getSortedPlayerDataForStrikeRateOn5wAnd4w();
+            IPLWktsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLWktsCSV[].class);
+            Assert.assertEquals("Lasith Malinga", scoreCSV[0].player);
+        } catch (IplCricketAnalyserException e) { }
+    }
 }

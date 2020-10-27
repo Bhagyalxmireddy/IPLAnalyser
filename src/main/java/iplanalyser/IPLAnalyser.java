@@ -180,4 +180,15 @@ public class IPLAnalyser {
         String sortedIPLPlayerJson = new Gson().toJson(this.playerCSVList);
         return sortedIPLPlayerJson;
     }
+
+    public String getSortedPlayerDataForStrikeRateOn5wAnd4w() throws IplCricketAnalyserException {
+        if(playerCSVMap == null || playerCSVMap.size() == 0){
+            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
+        }
+        playerCSVList.addAll(playerCSVMap.values());
+        Comparator<IPLPlayerDAO> iplCSVComparator = Comparator.comparing(player -> player.fiveWickets+player.fourWickets,Comparator.reverseOrder());
+        this.sort(iplCSVComparator.thenComparing(player -> player.strikingRate,Comparator.reverseOrder()));
+        String sortedIPLPlayerJson = new Gson().toJson(this.playerCSVList);
+        return sortedIPLPlayerJson;
+    }
 }
