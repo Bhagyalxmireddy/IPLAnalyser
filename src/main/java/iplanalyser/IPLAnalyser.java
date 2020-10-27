@@ -64,6 +64,9 @@ public class IPLAnalyser {
                     e.type.name());
         }
     }
+    public int loadIPLLeagueData(String csvPath1, String csvPath2) {
+       return 0;
+    }
 
     private void sort(Comparator<IPLPlayerDAO> playerCSVComparator) {
         for (int i=0;i<playerCSVList.size()-1;i++) {
@@ -213,4 +216,6 @@ public class IPLAnalyser {
         String sortedIPLPlayerJson = new Gson().toJson(this.playerCSVList);
         return sortedIPLPlayerJson;
     }
+
+
 }
