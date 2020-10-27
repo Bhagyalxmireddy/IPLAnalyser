@@ -197,4 +197,15 @@ public class IPLAnalyser {
         return sortedIPLPlayerJson;
 
     }
+
+    public String getSortedPlayerDataForMaximumHundredsWithBestAverage() throws IplCricketAnalyserException {
+        if(playerCSVMap == null || playerCSVMap.size() == 0){
+            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
+        }
+        playerCSVList.addAll(playerCSVMap.values());
+        Comparator<IPLPlayerDAO> iplCSVComparator = Comparator.comparing(player -> player.hundred,Comparator.reverseOrder());
+        this.sort(iplCSVComparator.thenComparing(player -> player.average,Comparator.reverseOrder()));
+        String sortedIPLPlayerJson = new Gson().toJson(this.playerCSVList);
+        return sortedIPLPlayerJson;
+    }
 }

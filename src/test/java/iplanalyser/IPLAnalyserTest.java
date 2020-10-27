@@ -170,13 +170,23 @@ public class IPLAnalyserTest {
         } catch (IplCricketAnalyserException e) { }
     }
     @Test
-    public void givenIPlData_whenSortOnAllRounder_ShouldReturnSortedResult() {
+    public void givenIPlData_whenSortOnRunsAndWickets_ShouldReturnSortedResult() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser();
             int numberOfRecords = iplAnalyser.loadIPLLeagueData(IPL_FACTS_SHEET_MOST_RUNS, IPL_FACTS_SHEET_MOST_WKTS);
             String sortedIPLData = iplAnalyser.getSortedOnPlayersDataForRunsAndWickets();
             IPLWktsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLWktsCSV[].class);
             Assert.assertEquals("Kagiso Rabada", scoreCSV[0].player);
+        } catch (IplCricketAnalyserException e) { }
+    }
+    @Test
+    public void givenIPLData_WhenSortedOnWhoHitMaximumHundredsWithBestBattingAverage_ShouldReturnSortedResult() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            iplAnalyser.loadIPLRunsData(IPL_FACTS_SHEET_MOST_RUNS);
+            String sortedIPLData = iplAnalyser.getSortedPlayerDataForMaximumHundredsWithBestAverage();
+            IPLRunsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLRunsCSV[].class);
+            Assert.assertEquals("David Warner", scoreCSV[0].player);
         } catch (IplCricketAnalyserException e) { }
     }
 }
