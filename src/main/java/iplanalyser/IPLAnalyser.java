@@ -55,10 +55,10 @@ public class IPLAnalyser {
         if(playerCSVList == null || playerCSVList.size() == 0){
             throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
         }
-        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.average,Comparator.reverseOrder());
+        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(player -> player.average,Comparator.reverseOrder());
         this.sort(playerCSVList,censusCSVComparator);
-        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
-        return sortedStateCensusJson;
+        String sortedIPLPlayerJson = new Gson().toJson(playerCSVList);
+        return sortedIPLPlayerJson;
     }
 
 
@@ -66,10 +66,10 @@ public class IPLAnalyser {
         if(playerCSVList == null || playerCSVList.size() == 0){
             throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
         }
-        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.strikingRate,Comparator.reverseOrder());
+        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(player -> player.strikingRate,Comparator.reverseOrder());
         this.sort(playerCSVList,censusCSVComparator);
-        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
-        return sortedStateCensusJson;
+        String sortedIPLPlayerJson = new Gson().toJson(playerCSVList);
+        return sortedIPLPlayerJson;
 
     }
 
@@ -77,19 +77,30 @@ public class IPLAnalyser {
         if(playerCSVList == null || playerCSVList.size() == 0){
             throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
         }
-        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.four,Comparator.reverseOrder());
+        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(player -> player.four,Comparator.reverseOrder());
         this.sort(playerCSVList,censusCSVComparator);
-        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
-        return sortedStateCensusJson;
+        String sortedIPLPlayerJson = new Gson().toJson(playerCSVList);
+        return sortedIPLPlayerJson;
     }
 
     public String getSortedPlayersDataForMaximumSix() throws IplCricketAnalyserException {
         if(playerCSVList == null || playerCSVList.size() == 0){
             throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
         }
-        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(census -> census.six,Comparator.reverseOrder());
+        Comparator<IPLRunsCSV> censusCSVComparator = Comparator.comparing(player -> player.six,Comparator.reverseOrder());
         this.sort(playerCSVList,censusCSVComparator);
-        String sortedStateCensusJson = new Gson().toJson(playerCSVList);
-        return sortedStateCensusJson;
+        String sortedIPLPlayerJson = new Gson().toJson(playerCSVList);
+        return sortedIPLPlayerJson;
+    }
+
+    public String getSortedPlayersDataForStrikeRateOnSixAndFour() throws IplCricketAnalyserException {
+        if(playerCSVList == null || playerCSVList.size() == 0){
+            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
+        }
+        Comparator<IPLRunsCSV> iplCSVComparator = Comparator.comparing(player -> player.six+player.four,Comparator.reverseOrder());
+        this.sort(playerCSVList,iplCSVComparator.thenComparing(player -> player .strikingRate,Comparator.reverseOrder()));
+        String sortedIPLPlayerJson = new Gson().toJson(playerCSVList);
+        return sortedIPLPlayerJson;
+
     }
 }

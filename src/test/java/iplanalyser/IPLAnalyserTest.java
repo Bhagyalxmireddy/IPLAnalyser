@@ -59,4 +59,14 @@ public class IPLAnalyserTest {
             Assert.assertEquals("Andre Russell", scoreCSV[0].player);
         } catch (IplCricketAnalyserException e) { }
     }
+    @Test
+    public void givenIPLData_WhenSortedByWhoHadBestStrikeRateWithSixAndFour_ShouldReturnSortedResult() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            iplAnalyser.loadIPLRunsData(IPL_FACTS_SHEET_MOST_RUNS);
+            String sortedIPLData = iplAnalyser.getSortedPlayersDataForStrikeRateOnSixAndFour();
+            IPLRunsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLRunsCSV[].class);
+            Assert.assertEquals("Andre Russell", scoreCSV[0].player);
+        } catch (IplCricketAnalyserException e) { }
+    }
 }
