@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iplanalyser.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T02:18:03" hostname="DESKTOP-25DPEJS" time="11.548">
+<testsuite name="iplanalyser.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T02:27:24" hostname="DESKTOP-25DPEJS" time="22.989">
   <properties/>
-  <testcase name="givenIPLData_WhenSortedByWhoHadBestAverageWithBestStrikeRate_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="11.548"/>
+  <testcase name="givenIPLData_WhenSortedByWhoHitMaximumRunsWithBestAverage_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="22.989"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
