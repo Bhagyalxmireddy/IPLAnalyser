@@ -23,46 +23,13 @@ public class IPLAnalyser {
     }
 
     public int loadIPLRunsData(String csvFilePath) throws IplCricketAnalyserException {
-        try(Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
-            ICSVBulider csvBulider = CSVBuliderFactory.createCSVBulider();
-            Iterator<IPLRunsCSV> csvIterator = csvBulider.getCSVFileIterator(reader, IPLRunsCSV.class);
-            Iterable<IPLRunsCSV> csvIterable = () -> csvIterator;
-            StreamSupport.stream(csvIterable.spliterator(), false)
-                    .map(IPLRunsCSV.class::cast)
-                    .forEach(iplCSV -> playerCSVMap.put(iplCSV.player, new IPLPlayerDAO(iplCSV)));
-            return playerCSVMap.size();
-        } catch (IOException e) {
-            throw new IplCricketAnalyserException(e.getMessage(),
-                    IplCricketAnalyserException.ExceptionType.IPL_FILE_PROBLEM);
-
-        }catch (RuntimeException e){
-            throw new IplCricketAnalyserException(e.getMessage(),
-                    IplCricketAnalyserException.ExceptionType.RUNTIME_EXCEPTION);
-        } catch (CSVBuliderException e) {
-            throw new IplCricketAnalyserException(e.getMessage(),
-                    e.type.name());
-        }
+        playerCSVMap = new IPLPlayersLoader().loadIPLPlayersData(IPLRunsCSV.class,csvFilePath);
+        return playerCSVMap.size();
     }
     public int loadIPLWktsData(String csvFilePath) throws IplCricketAnalyserException {
-        try(Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
-            ICSVBulider csvBulider = CSVBuliderFactory.createCSVBulider();
-            Iterator<IPLWktsCSV> csvIterator = csvBulider.getCSVFileIterator(reader, IPLWktsCSV.class);
-            Iterable<IPLWktsCSV> csvIterable = () -> csvIterator;
-            StreamSupport.stream(csvIterable.spliterator(), false)
-                    .map(IPLWktsCSV.class::cast)
-                    .forEach(iplCSV -> playerCSVMap.put(iplCSV.player, new IPLPlayerDAO(iplCSV)));
-            return playerCSVMap.size();
-        } catch (IOException e) {
-            throw new IplCricketAnalyserException(e.getMessage(),
-                    IplCricketAnalyserException.ExceptionType.IPL_FILE_PROBLEM);
+        playerCSVMap = new IPLPlayersLoader().loadIPLPlayersData(IPLWktsCSV.class,csvFilePath);
+        return playerCSVMap.size();
 
-        }catch (RuntimeException e){
-            throw new IplCricketAnalyserException(e.getMessage(),
-                    IplCricketAnalyserException.ExceptionType.RUNTIME_EXCEPTION);
-        } catch (CSVBuliderException e) {
-            throw new IplCricketAnalyserException(e.getMessage(),
-                    e.type.name());
-        }
     }
     public int loadIPLLeagueData(String csvPath1, String csvPath2) {
        return 0;
