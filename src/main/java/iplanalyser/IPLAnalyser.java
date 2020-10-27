@@ -103,4 +103,14 @@ public class IPLAnalyser {
         return sortedIPLPlayerJson;
 
     }
+
+    public String getSortedPlayerDataForBestAverageOnStrikeRate() throws IplCricketAnalyserException {
+        if(playerCSVList == null || playerCSVList.size() == 0){
+            throw new IplCricketAnalyserException("No census data",IplCricketAnalyserException.ExceptionType.NO_SCORE_DATA);
+        }
+        Comparator<IPLRunsCSV> iplCSVComparator = Comparator.comparing(player -> player.average,Comparator.reverseOrder());
+        this.sort(playerCSVList,iplCSVComparator.thenComparing(ipl -> ipl.strikingRate,Comparator.reverseOrder()));
+        String sortedIPLPlayerJson = new Gson().toJson(playerCSVList);
+        return sortedIPLPlayerJson;
+    }
 }
