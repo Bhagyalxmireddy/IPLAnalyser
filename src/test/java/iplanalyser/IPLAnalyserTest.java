@@ -169,5 +169,14 @@ public class IPLAnalyserTest {
             Assert.assertEquals("Krishnappa Gowtham", scoreCSV[0].player);
         } catch (IplCricketAnalyserException e) { }
     }
-
+    @Test
+    public void givenIPlData_whenSortOnAllRounder_ShouldReturnSortedResult() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            int numberOfRecords = iplAnalyser.loadIPLLeagueData(IPL_FACTS_SHEET_MOST_RUNS, IPL_FACTS_SHEET_MOST_WKTS);
+            String sortedIPLData = iplAnalyser.getSortedOnPlayersDataForRunsAndWickets();
+            IPLWktsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLWktsCSV[].class);
+            Assert.assertEquals("Kagiso Rabada", scoreCSV[0].player);
+        } catch (IplCricketAnalyserException e) { }
+    }
 }
