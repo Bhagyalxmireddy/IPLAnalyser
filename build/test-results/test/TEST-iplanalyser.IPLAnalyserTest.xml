@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="iplanalyser.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T04:02:43" hostname="DESKTOP-25DPEJS" time="103.504">
+<testsuite name="iplanalyser.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-27T04:10:55" hostname="DESKTOP-25DPEJS" time="79.588">
   <properties/>
-  <testcase name="givenIPLData_WhenSortedByWhoHadGreatBowlingAverageWithBestStrikeRate_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="103.504"/>
+  <testcase name="givenIPLData_WhenSortedByMaximumWicketsWithBestBowlingAverage_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="79.588"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
