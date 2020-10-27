@@ -8,6 +8,7 @@ public class IPLAnalyserTest {
 
 
     private static final String IPL_FACTS_SHEET_MOST_RUNS = "C:\\Users\\USER\\Downloads\\IPL_Analyser_Program\\src\\test\\resources\\IPL2019FactsheetMostRuns.csv";
+    private static final String IPL_FACTS_SHEET_MOST_WKTS = "C:\\Users\\USER\\Downloads\\IPL_Analyser_Program\\src\\test\\resources\\IPL2019FactsheetMostWkts.csv";
 
     @Test
     public void givenIPLCSVRunsFileReturnsCorrectRecords() {
@@ -87,6 +88,25 @@ public class IPLAnalyserTest {
             String sortedIPLData = iplAnalyser.getSortedPlayerDataForMaximumRunsWithBestAverage();
             IPLRunsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLRunsCSV[].class);
             Assert.assertEquals("David Warner", scoreCSV[0].player);
+        } catch (IplCricketAnalyserException e) { }
+    }
+    @Test
+    public void givenIPLCSVWktsFileReturnsCorrectRecords() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            int numOfRecords = iplAnalyser.loadIPLWktsData(IPL_FACTS_SHEET_MOST_WKTS);
+            Assert.assertEquals(99, numOfRecords);
+        } catch (IplCricketAnalyserException e) { }
+    }
+
+    @Test
+    public void givenIPLData_WhenSortedByTopBowlingAverages_ShouldReturnSortedResult() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser();
+            iplAnalyser.loadIPLWktsData(IPL_FACTS_SHEET_MOST_WKTS);
+            String sortedIPLData = iplAnalyser.getSortedAverage();
+            IPLWktsCSV[] scoreCSV = new Gson().fromJson(sortedIPLData, IPLWktsCSV[].class);
+            Assert.assertEquals("Krishnappa Gowtham", scoreCSV[0].player);
         } catch (IplCricketAnalyserException e) { }
     }
 }
