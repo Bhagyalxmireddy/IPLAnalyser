@@ -16,6 +16,7 @@ public class IPLAnalyser {
 
     List<IPLPlayerDAO> playerCSVList = null;
     Map<String,IPLPlayerDAO> playerCSVMap = new HashMap<>();
+    private Map<String,IPLPlayerDAO> batsmanData = new HashMap<>();
 
     public IPLAnalyser(){
         this.playerCSVList = new ArrayList<IPLPlayerDAO>();
@@ -218,5 +219,9 @@ public class IPLAnalyser {
         this.sort(iplCSVComparator.thenComparing(player -> player.average,Comparator.reverseOrder()));
         String sortedIPLPlayerJson = new Gson().toJson(this.playerCSVList);
         return sortedIPLPlayerJson;
+    }
+    public int loadIPLRunsCensusData(String csvFilePath) throws IplCricketAnalyserException {
+        batsmanData = new IPLPlayersLoader().loadIPLPlayersData(IPLRunsCSV.class,csvFilePath);
+        return batsmanData.size();
     }
 }
