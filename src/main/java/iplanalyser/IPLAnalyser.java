@@ -1,21 +1,16 @@
 package iplanalyser;
 
 import com.google.gson.Gson;
-import csvbulider.CSVBuliderException;
-import csvbulider.CSVBuliderFactory;
-import csvbulider.ICSVBulider;
+import javafx.beans.value.ObservableBooleanValue;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.StreamSupport;
 
 public class IPLAnalyser {
 
     List<IPLPlayerDAO> playerCSVList = null;
     Map<String,IPLPlayerDAO> playerCSVMap = new HashMap<>();
+    private Map<String, IPLPlayerDAO> batsmanData;
+
 
     public IPLAnalyser(){
         this.playerCSVList = new ArrayList<IPLPlayerDAO>();
@@ -219,4 +214,10 @@ public class IPLAnalyser {
         String sortedIPLPlayerJson = new Gson().toJson(this.playerCSVList);
         return sortedIPLPlayerJson;
     }
+
+    public Map<String, IPLPlayerDAO> loadIPLRunsCensusData(String csvFilePath) throws IplCricketAnalyserException {
+        batsmanData = new IPLPlayersLoader().loadIPLPlayersData(IPLRunsCSV.class,csvFilePath);
+        return batsmanData;
+    }
+
 }
