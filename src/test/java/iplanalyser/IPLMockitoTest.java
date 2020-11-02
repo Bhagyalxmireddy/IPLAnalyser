@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.mockito.Mockito.mock;
@@ -16,13 +17,14 @@ import static org.mockito.Mockito.when;
 
 public class IPLMockitoTest {
 
+
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
-    Map<String, IPLPlayerDAO> batsmanData;
-    Map<String, IPLPlayerDAO> bowlersData;
+    Map<String, IPLPlayerDAO> batsmanData = new HashMap<>();
+    Map<String, IPLPlayerDAO> bowlersData = new HashMap<>();
     private static final String IPL_FACTS_SHEET_MOST_RUNS = "C:\\Users\\USER\\Downloads\\IPL_Analyser_Program\\src\\test\\resources\\IPL2019FactsheetMostRuns.csv";
-
+    private static final String IPL_FACTS_SHEET_MOST_WKSTS = "C:\\Users\\USER\\Downloads\\IPL_Analyser_Program\\src\\test\\resources\\IPL2019FactsheetMostWkts.csv";
     @Mock
     IPLAnalyser iplAnalyser;
 
@@ -62,10 +64,10 @@ public class IPLMockitoTest {
             MockitoData mockitoData = new MockitoData(iplAnalyser);
             this.iplAnalyser = mock(IPLAnalyser.class);
             Map<String, IPLPlayerDAO> sampleMap = passData("bowlersData");
-            when(iplAnalyser.loadIPLRunsCensusData(IPL_FACTS_SHEET_MOST_RUNS)).thenReturn(mockitoData.loadIPlRunsCensusData(sampleMap));
+            when(iplAnalyser.loadIPLRunsCensusData(IPL_FACTS_SHEET_MOST_WKSTS)).thenReturn(mockitoData.loadIPlRunsCensusData(sampleMap));
             SampleAnalyser sampleAnalyser = new SampleAnalyser();
             sampleAnalyser.setLoader(iplAnalyser);
-            int count = sampleAnalyser.findSize(IPL_FACTS_SHEET_MOST_RUNS);
+            int count = sampleAnalyser.findSize(IPL_FACTS_SHEET_MOST_WKSTS);
             Assert.assertEquals(3, count);
         } catch (IplCricketAnalyserException e) {
             e.printStackTrace();

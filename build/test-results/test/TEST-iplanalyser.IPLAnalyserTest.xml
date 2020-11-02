@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="iplanalyser.IPLAnalyserTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2020-11-02T13:34:05" hostname="DESKTOP-25DPEJS" time="8.583">
+  <properties/>
+  <testcase name="givenIPLRunsData_WhenSortedByMaximumFour_ShouldReturnCorrectResult" classname="iplanalyser.IPLAnalyserTest" time="1.154"/>
+  <testcase name="givenIPLData_WhenSortedByBestEconomy_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.565"/>
+  <testcase name="givenIPLData_WhenSortedByMaximumWicketsWithBestBowlingAverage_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.491"/>
+  <testcase name="givenIPLData_WhenSortedByWhoHadBestStrikeRateWithSixAndFour_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.381"/>
+  <testcase name="givenIPLData_WhenSortedOnWhoHitMaximumHundredsWithBestBattingAverage_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.293"/>
+  <testcase name="givenIPLData_WhenSortedByBestAverageWithout100sAnd50s_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.403"/>
+  <testcase name="givenIPLData_WhenSortedByWhoHadBestStrikeRateWithMaximum5wAnd4w_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.459"/>
+  <testcase name="givenIPLRunsData_WhenSortedByTopStrikeRate_ShouldReturnCorrectResult" classname="iplanalyser.IPLAnalyserTest" time="0.352"/>
+  <testcase name="givenIPlData_whenSortOnRunsAndWickets_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.601"/>
+  <testcase name="givenIPLRunsData_WhenSortedByMaximumSix_ShouldReturnCorrectResult" classname="iplanalyser.IPLAnalyserTest" time="0.316"/>
+  <testcase name="givenIPLCSVWktsFileReturnsCorrectRecords" classname="iplanalyser.IPLAnalyserTest" time="0.397"/>
+  <testcase name="givenIPlData_whenSortOnBattingAndBowlingAverages_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.579"/>
+  <testcase name="givenIPLData_WhenSortedByWhoHitMaximumRunsWithBestAverage_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.326"/>
+  <testcase name="givenIPLRunsData_WhenSortedByTopBattingAverages_ShouldReturnCorrectResult" classname="iplanalyser.IPLAnalyserTest" time="0.266"/>
+  <testcase name="givenIPLData_WhenSortedByTopBowlingAverages_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.361"/>
+  <testcase name="givenIPLData_WhenSortedByWhoHadGreatBowlingAverageWithBestStrikeRate_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.416"/>
+  <testcase name="givenIPLData_WhenSortedByWhoHadBestAverageWithBestStrikeRate_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.309"/>
+  <testcase name="givenIPLData_WhenSortedByTopBowlingStrikeRate_ShouldReturnSortedResult" classname="iplanalyser.IPLAnalyserTest" time="0.421"/>
+  <testcase name="givenIPLCSVRunsFileReturnsCorrectRecords" classname="iplanalyser.IPLAnalyserTest" time="0.277"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
