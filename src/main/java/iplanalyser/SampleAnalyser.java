@@ -1,5 +1,7 @@
 package iplanalyser;
 
+import java.util.Map;
+
 public class SampleAnalyser {
 
     public IPLAnalyser iplAnalyser;

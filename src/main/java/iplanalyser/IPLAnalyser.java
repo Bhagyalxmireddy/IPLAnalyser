@@ -1,7 +1,6 @@
 package iplanalyser;
 
 import com.google.gson.Gson;
-import javafx.beans.value.ObservableBooleanValue;
 
 import java.util.*;
 
@@ -9,7 +8,7 @@ public class IPLAnalyser {
 
     List<IPLPlayerDAO> playerCSVList = null;
     Map<String,IPLPlayerDAO> playerCSVMap = new HashMap<>();
-    private Map<String, IPLPlayerDAO> batsmanData;
+    private Map<String, IPLPlayerDAO> batsmanData = new HashMap<>();
 
 
     public IPLAnalyser(){
@@ -177,9 +176,9 @@ public class IPLAnalyser {
     }
 
 
-    public Map<String, IPLPlayerDAO> loadIPLRunsCensusData(String csvFilePath) throws IplCricketAnalyserException {
+    public int loadIPLRunsCensusData(String csvFilePath) throws IplCricketAnalyserException {
         batsmanData = new IPLPlayersLoader().loadIPLPlayersData(IPLRunsCSV.class,csvFilePath);
-        return batsmanData;
+        return batsmanData.size();
     }
 
 }
